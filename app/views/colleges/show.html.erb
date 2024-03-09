@@ -1,0 +1,43 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @college %>
+
+<h4><center>List of Departments</center></h4> 
+
+<table>
+  <thead> 
+
+    <tr>
+      <td><strong>Name</strong></td>
+      <td><strong>Location</strong></td>
+      <td><strong>Actions</strong></td>
+    </tr>
+
+  </thead>
+  <tbody>
+    <% @college.departments.each do |department| %>
+      <tr>
+        <td><%= department.name %></td>
+        <td><%= department.location %></td>
+        <td>
+          <%= link_to "Show", department_path(department) %> |
+          <%= link_to "Edit", edit_department_path(department) %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3"><strong>List of Laboratories for <%= department.name %></strong></td>
+      </tr>
+      <% department.laboratories.each do |laboratory| %>
+        <tr>
+          <td>-><%= laboratory.name %></td>
+          <td><%= laboratory.location %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<div>
+  <%= link_to "Edit this college", edit_college_path(@college) %> |
+  <%= link_to "Back to colleges", colleges_path %>
+</div>

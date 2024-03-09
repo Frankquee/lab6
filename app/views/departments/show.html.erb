@@ -1,0 +1,26 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @department %>
+
+<h4><center>List of laboratories</center></h4>
+<table>
+  <thead>
+    <tr>
+      <td><strong>Name</strong></td>
+      <td><strong>Location</strong></td>
+      <td><strong>Actions</strong></td>
+    </tr>
+  </thead>
+<tbody>
+  <% @department.laboratories.each do |laboratory| %>
+    <tr>
+        <td><%=laboratory.name%></td>
+        <td><%=laboratory.location%></td>
+    <td>
+      <%= link_to "Show", laboratory_path(laboratory) %> |
+      <%= link_to "Edit", edit_laboratory_path(laboratory) %>
+    </td>
+    </tr>
+  <%end%>
+</tbody>
+</table>
